@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>About Us</title>
+    <title>@ViewData["Title"]</title>
 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
 
-    <title>@ViewData["Title"]</title>
+
 
 
     <link rel="shortcut icon" href="~/images/favicon.png" type="image/x-icon">
@@ -77,25 +77,25 @@
                                         <li class="dropdown">
                                             <a href="#">About us</a>
                                             <ul>
-                                                <li><a href="about.html">About SOFT ZONE</a></li>
-                                                <li><a href="mission&vision.html">Mission & Vision</a></li>
+                                                <li>@Html.ActionLink("About SOFT ZONE", "about", "Home")</li>
+                                                <li>@Html.ActionLink("Mission & Vision", "MissionVision", "Home")</li>
                                             </ul>
                                         </li>
                                         <li class="dropdown">
                                             <a href="#">Services</a>
                                             <ul>
-                                                <li><a href="service.html">System Integration Services</a></li>
-                                                <li><a href="service.html">Mobile Application</a></li>
-                                                <li><a href="service.html">Integrated Solutions</a></li>
-                                                <li><a href="service.html">Software Services</a></li>
-                                                <li><a href="service.html">Consultation Services</a></li>
+                                                <li>@Html.ActionLink("System Integration Services", "services", "Home")</li>
+                                                <li>@Html.ActionLink("Mobile Application", "services", "Home")</li>
+                                                <li>@Html.ActionLink("Integrated Solutions", "services", "Home")</li>
+                                                <li>@Html.ActionLink("Software Services", "services", "Home")</li>
+                                                <li>@Html.ActionLink("Consultation Services", "services", "Home")</li>
                                             </ul>
                                         </li>
-                                        <li><a href="projects.html">Projects</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="faq.html">FAQ’s</a></li>
-                                        <li><a href="testimonials.html">Testimonials</a></li>
-                                        <li><a href="contact.html">Contact</a></li>
+                                        <li>@Html.ActionLink("Projects", "Projects", "Home")</li>
+                                        <li>@Html.ActionLink("Blog", "Blog", "Home")</li>
+                                        <li>@Html.ActionLink("FAQ’s", "FAQ", "Home")</li>
+                                        <li>@Html.ActionLink("Testimonials", "Testimonials", "Home")</li>
+                                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                                     </ul>
                                 </div>
                             </nav>
@@ -211,8 +211,9 @@
     <script src="~/js/appear.js"></script>
     <script src="~/js/modernizr-2.6.2.min.js"></script>
     <script src="~/js/polyfills.js"></script>
-    <script src="~/js/script.js"></script>
     @RenderSection("Scripts", required: false)
+    <script src="~/js/script.js"></script>
+
 
 
 </body>

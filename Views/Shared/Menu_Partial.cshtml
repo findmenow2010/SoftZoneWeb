@@ -2,29 +2,29 @@
 <nav class="main-menu">
     <div class="navbar-collapse show collapse clearfix">
         <ul class="navigation clearfix">
-            <li class="current"><a href="index.html">Home</a></li>
+            <li class="current"><a href="~/Home/Index">Home</a></li>
             <li class="dropdown">
                 <a href="#">About us</a>
                 <ul>
                     <li>@Html.ActionLink("About SOFT ZONE", "about", "Home")</li>
-                    <li><a href="mission&vision.html">Mission & Vision</a></li>
+                    <li>@Html.ActionLink("Mission & Vision", "MissionVision", "Home")</li>
                 </ul>
             </li>
             <li class="dropdown">
                 <a href="#">Services</a>
                 <ul>
-                    <li><a href="service.html">System Integration Services</a></li>
-                    <li><a href="service.html">Mobile Application</a></li>
-                    <li><a href="service.html">Integrated Solutions</a></li>
-                    <li><a href="service.html">Software Services</a></li>
-                    <li><a href="service.html">Consultation Services</a></li>
+                    <li>@Html.ActionLink("System Integration Services", "services", "Home")</li>
+                    <li>@Html.ActionLink("Mobile Application", "services", "Home")</li>
+                    <li>@Html.ActionLink("Integrated Solutions", "services", "Home")</li>
+                    <li>@Html.ActionLink("Software Services", "services", "Home")</li>
+                    <li>@Html.ActionLink("Consultation Services", "services", "Home")</li>
                 </ul>
             </li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="blog.html">Blog</a></li>
-            <li><a href="faq.html">FAQ’s</a></li>
-            <li><a href="testimonials.html">Testimonials</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li>@Html.ActionLink("Projects", "Projects", "Home")</li>
+            <li>@Html.ActionLink("Blog", "Blog", "Home")</li>
+            <li>@Html.ActionLink("FAQ’s", "FAQ", "Home")</li>
+            <li>@Html.ActionLink("Testimonials", "Testimonials", "Home")</li>
+            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
         </ul>
     </div>
 </nav><!-- Main Menu End-->

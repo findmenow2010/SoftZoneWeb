@@ -6,16 +6,19 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SoftZone_WebSite.Models;
+using SoftZone_WebSite.Repository.Interface;
 
 namespace SoftZone_WebSite.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private readonly INewsLetter_SubscriberRepository newsLetter_SubscriberRepository;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, INewsLetter_SubscriberRepository newsLetter_SubscriberRepository)
         {
             _logger = logger;
+            this.newsLetter_SubscriberRepository = newsLetter_SubscriberRepository ?? throw new ArgumentNullException(nameof(newsLetter_SubscriberRepository));
         }
 
         public IActionResult Index()
@@ -54,6 +57,28 @@ namespace SoftZone_WebSite.Controllers
         {
             return View();
         }
+
+        [HttpPost]
+
+        public async Task<IActionResult> News_Letter_Subscribe(string Email)
+        {
+            if (!string.IsNullOrWhiteSpace(Email))
+            {
+                if (await newsLetter_SubscriberRepository.SubscribedBefore(Email)) {
+                    return Ok("Email already exists");
+                }
+                newsLetter_SubscriberRepository.Add(new NewsLetterSubscriber {Email = Email });
+                var res = await newsLetter_SubscriberRepository.SaveChanges();
+                if (res > 0)
+                {
+                    return Ok("Subscribed Successfully..");
+                }
+                else { return Ok("Error occured please try again later."); }
+            }
+            else return Ok("Validate your Email.");
+        }
+
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

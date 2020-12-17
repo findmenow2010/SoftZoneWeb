@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using SoftZone_WebSite.Models;
+using SoftZone_WebSite.Repository;
+using SoftZone_WebSite.Repository.Interface;
 
 namespace SoftZone_WebSite
 {
@@ -24,6 +28,9 @@ namespace SoftZone_WebSite
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<SoftZone_Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddTransient<INewsLetter_SubscriberRepository, NewsLetter_SubscriberRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

@@ -29,8 +29,11 @@ namespace SoftZone_WebSite
         {
             services.AddControllersWithViews();
             services.AddDbContext<SoftZone_Context>(opt => opt.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            // configure strongly typed settings object
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
 
             services.AddTransient<INewsLetter_SubscriberRepository, NewsLetter_SubscriberRepository>();
+            services.AddTransient<IEmailService, EmailService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

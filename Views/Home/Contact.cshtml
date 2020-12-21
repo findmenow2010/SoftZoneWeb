@@ -75,3 +75,88 @@
     </div>
 </section>
 
+<section class="contact-form-section">
+    <div class="auto-container">
+
+        <!-- Sec Title -->
+        <div class="sec-title">
+            <div class="clearfix">
+                <div class="pull-left">
+                    <div class="title">Send Your Message</div>
+                    <h2>Send Your Message</h2>
+                </div>
+                <div class="pull-right">
+                    <div class="text">Our goal is to help our companies maintain or achieve best- in-class positions in their <br> respective industries and our team works.</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Inner Container -->
+        <div class="inner-container">
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+
+                <!--Contact Form
+                <form method="post" action="http://steelthemes.com/demo/html/consoul/sendemail.php" id="contact-form">-->
+                @using (Html.BeginForm("ContactUs", "Home", FormMethod.Post))
+                {
+                    <div class="row clearfix">
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                            <label>Your name *</label>
+                            <input type="text" id="username" name="username" placeholder="" required>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                            <label>Email address *</label>
+                            <input type="email" id="email" name="email" placeholder="" required>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                            <label>Phone num *</label>
+                            <input type="text" id="phone" name="phone" placeholder="" required>
+                        </div>
+
+                        <div class="col-lg-6 col-md-6 col-sm-12 form-group">
+                            <label>Website</label>
+                            <input type="text" id="website" name="website" placeholder="" required>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 form-group">
+                            <label>Your Message</label>
+                            <textarea class="" id="message" name="message" placeholder="Write your message here. . ."></textarea>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center form-group">
+                            <button class="theme-btn submit-btn" type="submit" name="submit-form">Send Message <span class="arrow flaticon-next-8"></span></button>
+                        </div>
+
+                    </div>
+                }
+                @*</form>*@
+
+            </div>
+            <!--End Contact Form -->
+
+        </div>
+
+    </div>
+</section>
+
+<section class="contact-form-section">
+    <div class="auto-container">
+        <!-- Sec Title -->
+        <div class="sec-title centered" id="location">
+            <div class="title">Our Location</div>
+            <h2>SOFT ZONE ON MAP</h2>
+            <div class="text">Our goal is to help our companies maintain or achieve best- in-class positions in their <br> respective industries and our team works.</div>
+        </div>
+        <div class="location">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3418.6507102639034!2d31.3610346848611!3d31.035979881532498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xec7d8cc1f0d930e5!2sSoftzone%20Company!5e0!3m2!1sar!2seg!4v1607979958895!5m2!1sar!2seg" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+        </div>
+
+
+    </div>
+</section>
+

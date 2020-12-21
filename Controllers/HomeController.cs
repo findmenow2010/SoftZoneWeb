@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using SoftZone_WebSite.Models;
 using SoftZone_WebSite.Repository.Interface;
+using System;
+using System.Diagnostics;
+using System.Threading.Tasks;
 
 namespace SoftZone_WebSite.Controllers
 {
@@ -14,11 +12,14 @@ namespace SoftZone_WebSite.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly INewsLetter_SubscriberRepository newsLetter_SubscriberRepository;
+        private readonly IEmailService _emailService;
 
-        public HomeController(ILogger<HomeController> logger, INewsLetter_SubscriberRepository newsLetter_SubscriberRepository)
+        public HomeController(ILogger<HomeController> logger, INewsLetter_SubscriberRepository newsLetter_SubscriberRepository,
+            IEmailService emailService)
         {
             _logger = logger;
             this.newsLetter_SubscriberRepository = newsLetter_SubscriberRepository ?? throw new ArgumentNullException(nameof(newsLetter_SubscriberRepository));
+            this._emailService = emailService;
         }
 
         public IActionResult Index()
@@ -78,11 +79,24 @@ namespace SoftZone_WebSite.Controllers
             else return Ok("Validate your Email.");
         }
 
+        [HttpPost]
+        public  IActionResult ContactUs(string username,string email,string phone,string website, string message)
+        {
+            _emailService.Send(email, "info@soft-zone.net", string.Format("{0}-{1}-{2}-{3}", username, email, phone, website), message);
+            return View("Contact");
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
+
+
+
     }
+
+
+
 }

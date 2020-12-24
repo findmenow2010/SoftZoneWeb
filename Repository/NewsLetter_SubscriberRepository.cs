@@ -2,8 +2,6 @@
 using SoftZone_WebSite.Models;
 using SoftZone_WebSite.Repository.Interface;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 
 namespace SoftZone_WebSite.Repository

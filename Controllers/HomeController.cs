@@ -13,13 +13,15 @@ namespace SoftZone_WebSite.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly INewsLetter_SubscriberRepository newsLetter_SubscriberRepository;
         private readonly IEmailService _emailService;
+        private readonly IContactUsRepositoryAsync ContactUsrepo;
 
         public HomeController(ILogger<HomeController> logger, INewsLetter_SubscriberRepository newsLetter_SubscriberRepository,
-            IEmailService emailService)
+            IEmailService emailService,IContactUsRepositoryAsync _ContactUsrepo)
         {
             _logger = logger;
             this.newsLetter_SubscriberRepository = newsLetter_SubscriberRepository ?? throw new ArgumentNullException(nameof(newsLetter_SubscriberRepository));
             this._emailService = emailService;
+            ContactUsrepo = _ContactUsrepo ?? throw new ArgumentNullException(nameof(_ContactUsrepo));
         }
 
         public IActionResult Index()
@@ -82,7 +84,8 @@ namespace SoftZone_WebSite.Controllers
         [HttpPost]
         public  IActionResult ContactUs(string username,string email,string phone,string website, string message)
         {
-            _emailService.Send(email, "info@soft-zone.net", string.Format("{0}-{1}-{2}-{3}", username, email, phone, website), message);
+            //_emailService.Send(email, "info@soft-zone.net", string.Format("{0}-{1}-{2}-{3}", username, email, phone, website), message);
+             ContactUsrepo.SaveContact(new ContactUs { ID=0, Date= DateTime.Now, Email = email, mail_id = 0, Message=message, Mobile= phone, Name=username, Subject=website });
             return View("Contact");
         }
 

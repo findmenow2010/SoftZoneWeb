@@ -34,6 +34,7 @@ namespace SoftZone_WebSite
 
             services.AddTransient<INewsLetter_SubscriberRepository, NewsLetter_SubscriberRepository>();
             services.AddTransient<IEmailService, EmailService>();
+            services.AddTransient<IContactUsRepositoryAsync, ContactUsRepositoryAsync>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
